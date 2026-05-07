@@ -5,245 +5,332 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AEA Property Service LLC | Atlanta Metro</title>
-<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;1,300&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 :root{
-  --red:#c0181f;--red2:#e01f27;--darkred:#8f0f14;
-  --black:#0d0d0d;--dark:#141414;--card:#1a1a1a;--border:#2a2a2a;
-  --white:#ffffff;--offwhite:#f5f2ee;--text:#f0ece8;--muted:#999;
+  --red:#d01c23;--red2:#f02028;--darkred:#9a1218;
+  --black:#060606;--dark:#0e0e0e;--card:#141414;--card2:#1a1a1a;--border:#242424;
+  --white:#ffffff;--text:#f0ece8;--muted:#777;--light:#b8b0a8;
 }
 *{box-sizing:border-box;margin:0;padding:0;}
 html{scroll-behavior:smooth;}
-body{background:var(--black);color:var(--text);font-family:'Open Sans',sans-serif;overflow-x:hidden;}
+body{background:var(--black);color:var(--text);font-family:'Barlow',sans-serif;overflow-x:hidden;}
+::-webkit-scrollbar{width:3px;}
+::-webkit-scrollbar-track{background:#0a0a0a;}
+::-webkit-scrollbar-thumb{background:var(--red);}
+a{color:inherit;text-decoration:none;-webkit-text-fill-color:inherit;}
 
-/* ── LOGO SVG ── */
-.aea-logo-svg{display:flex;align-items:center;gap:10px;text-decoration:none;}
-.logo-graphic{width:44px;height:44px;flex-shrink:0;}
-.logo-words{line-height:1.1;}
-.logo-words strong{display:block;font-family:‘Oswald’,sans-serif;font-size:18px;letter-spacing:2px;color:var(–white);font-weight:700;}
-.logo-words span{font-size:9px;letter-spacing:2.5px;color:var(–red);text-transform:uppercase;font-weight:600;}
+/* ── TEXTURE PATTERNS ── */
+.tex-grid{background-image:linear-gradient(rgba(255,255,255,.02) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.02) 1px,transparent 1px);background-size:48px 48px;}
+.tex-diagonal{background-image:repeating-linear-gradient(45deg,transparent,transparent 10px,rgba(255,255,255,.015) 10px,rgba(255,255,255,.015) 11px);}
+.tex-dots{background-image:radial-gradient(circle,rgba(255,255,255,.06) 1px,transparent 1px);background-size:24px 24px;}
 
 /* ── NAV ── */
-nav{position:fixed;top:0;left:0;right:0;z-index:100;
-background:rgba(13,13,13,.97);backdrop-filter:blur(12px);
-border-bottom:2px solid var(–red);padding:12px 5%;
-display:flex;align-items:center;justify-content:space-between;}
-.nav-links{display:flex;gap:24px;}
-.nav-links a{color:var(–muted);text-decoration:none;font-size:11px;font-weight:700;
+nav{position:fixed;top:0;left:0;right:0;z-index:200;height:64px;
+background:rgba(6,6,6,.97);backdrop-filter:blur(20px);
+border-bottom:1px solid rgba(208,28,35,.25);
+padding:0 5%;display:flex;align-items:center;justify-content:space-between;}
+.nav-logo{display:flex;align-items:center;gap:12px;}
+.logo-mark{width:38px;height:38px;background:var(–red);flex-shrink:0;
+clip-path:polygon(50% 0%,100% 25%,100% 75%,50% 100%,0% 75%,0% 25%);
+display:flex;align-items:center;justify-content:center;
+font-family:‘Barlow Condensed’,sans-serif;font-weight:900;font-size:17px;color:#fff;}
+.logo-words strong{display:block;font-family:‘Barlow Condensed’,sans-serif;
+font-size:17px;letter-spacing:3px;font-weight:800;color:var(–white);text-transform:uppercase;}
+.logo-words span{font-size:9px;letter-spacing:2.5px;color:var(–red);text-transform:uppercase;font-weight:600;}
+.nav-links{display:flex;gap:28px;}
+.nav-links a{color:var(–muted);font-size:11px;font-weight:600;
 letter-spacing:2px;text-transform:uppercase;transition:color .2s;}
-.nav-links a:hover{color:var(–red);}
-.nav-cta{background:var(–red);color:var(–white);border:none;border-radius:3px;
-padding:10px 20px;font-family:‘Open Sans’,sans-serif;font-weight:700;font-size:11px;
-cursor:pointer;letter-spacing:1px;text-transform:uppercase;text-decoration:none;transition:all .2s;}
-.nav-cta:hover{background:var(–red2);}
-.nav-mob{display:none;background:none;border:1px solid #333;border-radius:3px;
-padding:7px 11px;color:var(–white);cursor:pointer;font-size:18px;line-height:1;}
+.nav-links a:hover{color:var(–red) !important;-webkit-text-fill-color:var(–red) !important;}
+.nav-cta{background:var(–red);color:#fff !important;-webkit-text-fill-color:#fff !important;
+padding:10px 22px;font-family:‘Barlow Condensed’,sans-serif;font-weight:700;
+font-size:12px;letter-spacing:2px;text-transform:uppercase;transition:background .2s;border:none;cursor:pointer;}
+.nav-cta:hover{background:var(–red2) !important;}
+.nav-mob{display:none;background:none;border:1px solid #333;padding:7px 11px;
+color:#fff;cursor:pointer;font-size:17px;line-height:1;}
 
 /* ── HERO ── */
-.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;
-padding:110px 5% 70px;position:relative;overflow:hidden;
-background:linear-gradient(160deg,#0d0d0d 0%,#1a0a0a 100%);}
-.hero-stripe{position:absolute;top:0;left:0;width:5px;height:100%;background:var(–red);}
-.hero-bg-word{position:absolute;right:-3%;bottom:-8%;
-font-family:‘Oswald’,sans-serif;font-size:clamp(120px,28vw,320px);
-color:rgba(192,24,31,.06);line-height:1;letter-spacing:-4px;
-user-select:none;pointer-events:none;font-weight:700;}
-.hero-tag{display:inline-flex;align-items:center;gap:8px;
-background:rgba(192,24,31,.15);border:1px solid rgba(192,24,31,.4);
-border-radius:2px;padding:6px 14px;margin-bottom:24px;}
-.hero-tag-dot{width:7px;height:7px;background:var(–red);border-radius:50%;animation:blink 1.8s infinite;}
+.hero{min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden;
+background:var(–black);}
+/* Animated background */
+.hero-bg{position:absolute;inset:0;overflow:hidden;}
+.hero-bg-block{position:absolute;background:var(–red);opacity:.04;}
+.hero-bg-block:nth-child(1){width:600px;height:600px;top:-200px;right:-100px;transform:rotate(15deg);}
+.hero-bg-block:nth-child(2){width:400px;height:400px;bottom:-100px;right:200px;transform:rotate(30deg);}
+.hero-bg-block:nth-child(3){width:200px;height:200px;top:30%;left:60%;transform:rotate(45deg);}
+.hero-line{position:absolute;background:var(–red);}
+.hero-line:nth-child(4){width:2px;height:100%;left:5%;opacity:.15;}
+.hero-line:nth-child(5){width:100%;height:1px;top:50%;opacity:.08;}
+.hero-bigtext{position:absolute;right:-20px;bottom:-40px;
+font-family:‘Barlow Condensed’,sans-serif;font-size:clamp(150px,25vw,300px);
+font-weight:900;color:rgba(208,28,35,.05);line-height:1;letter-spacing:-6px;
+text-transform:uppercase;pointer-events:none;user-select:none;}
+.hero-content{position:relative;z-index:10;padding:100px 5% 80px;max-width:800px;}
+.hero-badge{display:inline-flex;align-items:center;gap:10px;margin-bottom:28px;
+border-left:3px solid var(–red);padding-left:16px;}
+.hero-badge-dot{width:6px;height:6px;background:var(–red);border-radius:50%;
+animation:blink 1.5s infinite;}
 @keyframes blink{0%,100%{opacity:1;}50%{opacity:.2;}}
-.hero-tag-txt{font-size:10px;letter-spacing:3px;color:var(–red);text-transform:uppercase;font-weight:700;}
-.hero h1{font-family:‘Oswald’,sans-serif;font-size:clamp(48px,9vw,108px);
-line-height:.93;letter-spacing:-1px;font-weight:700;margin-bottom:8px;}
-.hero h1 .r{color:var(–red);}
-.hero h1 .w{color:var(–white);}
-.hero-sub{font-size:15px;color:var(–muted);line-height:1.75;max-width:520px;
-margin:20px 0 36px;font-weight:300;}
-.hero-sub strong{color:var(–white);font-weight:600;}
-.hero-btns{display:flex;gap:12px;flex-wrap:wrap;}
-.btn-red{background:var(–red);color:var(–white);border:none;border-radius:3px;
-padding:14px 32px;font-family:‘Open Sans’,sans-serif;font-weight:700;font-size:13px;
-cursor:pointer;letter-spacing:.8px;text-transform:uppercase;text-decoration:none;
+.hero-badge span{font-size:11px;letter-spacing:3px;color:var(–red);text-transform:uppercase;font-weight:700;}
+h1{font-family:‘Barlow Condensed’,sans-serif;font-weight:900;
+font-size:clamp(64px,11vw,130px);line-height:.88;letter-spacing:-2px;
+text-transform:uppercase;margin-bottom:28px;}
+.h1-w{color:var(–white);display:block;}
+.h1-r{color:var(–red);display:block;}
+.h1-o{color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.2);display:block;}
+.hero-sub{font-size:16px;color:var(–light);line-height:1.75;max-width:520px;
+margin-bottom:40px;font-weight:300;}
+.hero-sub strong{color:#fff;font-weight:600;}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap;}
+.btn-r{background:var(–red);color:#fff !important;-webkit-text-fill-color:#fff !important;
+padding:15px 34px;font-family:‘Barlow Condensed’,sans-serif;font-weight:700;
+font-size:14px;letter-spacing:2px;text-transform:uppercase;
+transition:all .2s;display:inline-block;border:none;cursor:pointer;}
+.btn-r:hover{background:var(–red2);transform:translateY(-2px);}
+.btn-o{background:transparent;color:#fff !important;-webkit-text-fill-color:#fff !important;
+border:1px solid rgba(255,255,255,.25);
+padding:15px 34px;font-family:‘Barlow Condensed’,sans-serif;font-weight:700;
+font-size:14px;letter-spacing:2px;text-transform:uppercase;
 transition:all .2s;display:inline-block;}
-.btn-red:hover{background:var(–red2);transform:translateY(-2px);}
-.btn-wht{background:transparent;color:var(–white);border:1px solid #444;border-radius:3px;
-padding:14px 32px;font-family:‘Open Sans’,sans-serif;font-weight:600;font-size:13px;
-cursor:pointer;letter-spacing:.8px;text-transform:uppercase;text-decoration:none;
-transition:all .2s;display:inline-block;}
-.btn-wht:hover{border-color:var(–red);color:var(–red);}
-.hero-badges{display:flex;gap:28px;margin-top:48px;padding-top:36px;
-border-top:1px solid #222;flex-wrap:wrap;}
-.badge{display:flex;align-items:center;gap:10px;}
-.badge-icon{width:32px;height:32px;background:rgba(192,24,31,.15);border:1px solid rgba(192,24,31,.3);
-border-radius:3px;display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0;}
-.badge-txt{font-size:11px;color:var(–muted);text-transform:uppercase;letter-spacing:1.5px;font-weight:700;}
+.btn-o:hover{border-color:var(–red);color:var(–red) !important;-webkit-text-fill-color:var(–red) !important;}
+.hero-trust{display:flex;gap:32px;margin-top:56px;padding-top:36px;
+border-top:1px solid rgba(255,255,255,.08);flex-wrap:wrap;}
+.trust-item{display:flex;align-items:center;gap:10px;}
+.trust-icon{width:30px;height:30px;background:rgba(208,28,35,.15);
+border:1px solid rgba(208,28,35,.3);display:flex;align-items:center;
+justify-content:center;font-size:13px;color:var(–red);}
+.trust-label{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(–muted);font-weight:700;}
 
-/* ── RED BANNER ── */
-.red-banner{background:var(–red);padding:16px 5%;display:flex;
-align-items:center;justify-content:center;gap:40px;flex-wrap:wrap;
-position:relative;z-index:1;}
-.banner-item{font-family:‘Oswald’,sans-serif;font-size:15px;letter-spacing:2px;
-color:var(–white);text-transform:uppercase;display:flex;align-items:center;gap:8px;}
-.banner-dot{width:5px;height:5px;background:rgba(255,255,255,.4);border-radius:50%;}
+/* ── MARQUEE ── */
+.marquee{background:var(–red);padding:13px 0;overflow:hidden;}
+.marquee-track{display:flex;animation:scroll 30s linear infinite;width:max-content;}
+.marquee-item{font-family:‘Barlow Condensed’,sans-serif;font-size:13px;font-weight:700;
+letter-spacing:3px;text-transform:uppercase;color:#fff;
+padding:0 28px;white-space:nowrap;display:flex;align-items:center;gap:16px;}
+.marquee-item::before{content:’’;width:5px;height:5px;background:rgba(255,255,255,.5);
+border-radius:50%;flex-shrink:0;}
+@keyframes scroll{from{transform:translateX(0);}to{transform:translateX(-50%);}}
 
 /* ── SECTIONS ── */
-section{padding:80px 5%;position:relative;z-index:1;}
-.sec-label{font-size:10px;letter-spacing:3.5px;text-transform:uppercase;
-color:var(–red);font-weight:700;margin-bottom:12px;
-display:flex;align-items:center;gap:8px;}
-.sec-label::before{content:’’;width:18px;height:2px;background:var(–red);}
-h2{font-family:‘Oswald’,sans-serif;font-size:clamp(34px,5vw,56px);
-letter-spacing:-0.5px;line-height:1;font-weight:700;margin-bottom:12px;}
-.sec-desc{color:var(–muted);font-size:14px;line-height:1.75;max-width:520px;
-font-weight:300;margin-bottom:48px;}
+.sec{padding:96px 5%;position:relative;z-index:1;}
+.sec-dark{background:var(–dark);}
+.sec-black{background:var(–black);}
+.eyebrow{display:flex;align-items:center;gap:10px;margin-bottom:14px;}
+.eyebrow-line{width:28px;height:2px;background:var(–red);flex-shrink:0;}
+.eyebrow-text{font-size:10px;letter-spacing:3.5px;color:var(–red);
+text-transform:uppercase;font-weight:700;}
+h2{font-family:‘Barlow Condensed’,sans-serif;font-weight:900;
+font-size:clamp(38px,5.5vw,68px);line-height:.95;text-transform:uppercase;
+letter-spacing:-1px;margin-bottom:16px;}
+.sec-sub{color:var(–muted);font-size:15px;line-height:1.7;
+max-width:540px;font-weight:300;margin-bottom:52px;}
 
-/* ── SERVICES ── */
-#services{background:var(–dark);}
-.svc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:2px;}
+/* ── SERVICE CARDS ── */
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;}
 .svc-card{background:var(–card);border:1px solid var(–border);
-padding:30px 26px;transition:all .2s;position:relative;overflow:hidden;}
-.svc-card::before{content:’’;position:absolute;left:0;top:0;bottom:0;width:3px;
-background:var(–red);transform:scaleY(0);transform-origin:bottom;transition:transform .25s;}
-.svc-card:hover{background:#1f1414;border-color:#3a2020;transform:translateY(-2px);}
-.svc-card:hover::before{transform:scaleY(1);}
-.svc-icon{width:40px;height:40px;background:rgba(192,24,31,.12);border:1px solid rgba(192,24,31,.25);
-border-radius:4px;display:flex;align-items:center;justify-content:center;
-font-size:19px;margin-bottom:18px;}
-.svc-name{font-family:‘Oswald’,sans-serif;font-size:21px;letter-spacing:.5px;
-margin-bottom:8px;color:var(–white);font-weight:600;}
-.svc-desc{font-size:12px;color:var(–muted);line-height:1.7;font-weight:300;}
-.svc-list{margin-top:12px;display:flex;flex-direction:column;gap:5px;}
-.svc-list li{font-size:11px;color:#666;list-style:none;
-display:flex;align-items:center;gap:8px;}
-.svc-list li::before{content:’’;width:4px;height:4px;background:var(–red);
-border-radius:50%;flex-shrink:0;}
+padding:40px 32px;position:relative;overflow:hidden;transition:all .25s;}
+.svc-card::before{content:’’;position:absolute;top:0;left:0;right:0;height:3px;
+background:linear-gradient(90deg,var(–red),var(–darkred));
+transform:scaleX(0);transform-origin:left;transition:transform .3s;}
+.svc-card::after{content:’’;position:absolute;inset:0;
+background:radial-gradient(circle at 0% 100%,rgba(208,28,35,.08) 0%,transparent 60%);
+opacity:0;transition:opacity .3s;}
+.svc-card:hover{background:var(–card2);border-color:#2e2e2e;transform:translateY(-4px);}
+.svc-card:hover::before{transform:scaleX(1);}
+.svc-card:hover::after{opacity:1;}
+.svc-num{font-family:‘Barlow Condensed’,sans-serif;font-size:64px;font-weight:900;
+color:rgba(255,255,255,.04);line-height:1;position:absolute;top:20px;right:24px;
+transition:color .3s;}
+.svc-card:hover .svc-num{color:rgba(208,28,35,.1);}
+.svc-ico{width:48px;height:48px;background:rgba(208,28,35,.1);
+border:1px solid rgba(208,28,35,.2);display:flex;align-items:center;
+justify-content:center;font-size:22px;margin-bottom:20px;
+transition:background .3s;}
+.svc-card:hover .svc-ico{background:rgba(208,28,35,.2);}
+.svc-name{font-family:‘Barlow Condensed’,sans-serif;font-size:24px;font-weight:800;
+text-transform:uppercase;letter-spacing:.5px;margin-bottom:10px;color:#fff;}
+.svc-desc{font-size:13px;color:var(–muted);line-height:1.7;font-weight:300;margin-bottom:16px;}
+.svc-tags{display:flex;flex-wrap:wrap;gap:6px;}
+.svc-tag{font-size:10px;letter-spacing:.8px;text-transform:uppercase;
+color:rgba(208,28,35,.8);border:1px solid rgba(208,28,35,.2);
+padding:3px 8px;transition:all .2s;}
+.svc-card:hover .svc-tag{background:rgba(208,28,35,.08);}
+
+/* ── STATS BAR ── */
+.stats-bar{background:var(–red);padding:48px 5%;
+display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative;overflow:hidden;}
+.stats-bar::before{content:’’;position:absolute;inset:0;
+background:repeating-linear-gradient(45deg,transparent,transparent 20px,rgba(0,0,0,.05) 20px,rgba(0,0,0,.05) 21px);}
+.stat-item{text-align:center;padding:0 24px;position:relative;z-index:1;}
+.stat-item+.stat-item{border-left:1px solid rgba(255,255,255,.2);}
+.stat-big{font-family:‘Barlow Condensed’,sans-serif;font-size:clamp(48px,6vw,72px);
+font-weight:900;color:#fff;line-height:1;letter-spacing:-2px;}
+.stat-label{font-size:10px;letter-spacing:3px;text-transform:uppercase;
+color:rgba(255,255,255,.7);margin-top:6px;font-weight:700;}
 
 /* ── ABOUT ── */
-#about{background:var(–black);}
-.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;margin-top:48px;}
-.about-card{background:var(–card);border:1px solid var(–border);padding:36px;
-border-top:3px solid var(–red);}
-.about-big{font-family:‘Oswald’,sans-serif;font-size:60px;color:var(–red);
-line-height:1;letter-spacing:-2px;font-weight:700;}
-.about-big-sub{font-size:10px;letter-spacing:2.5px;text-transform:uppercase;
-color:var(–muted);margin-top:4px;font-weight:700;}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;margin-top:52px;}
+.about-visual{position:relative;}
+.about-box-main{background:var(–card2);border:1px solid var(–border);
+border-left:4px solid var(–red);padding:44px;position:relative;overflow:hidden;}
+.about-box-main::before{content:‘AEA’;position:absolute;bottom:-20px;right:-10px;
+font-family:‘Barlow Condensed’,sans-serif;font-size:120px;font-weight:900;
+color:rgba(208,28,35,.06);line-height:1;letter-spacing:-3px;pointer-events:none;}
+.about-tagline{font-family:‘Barlow Condensed’,sans-serif;font-size:clamp(28px,4vw,44px);
+font-weight:900;text-transform:uppercase;letter-spacing:-1px;line-height:1.05;color:#fff;}
+.about-tagline span{color:var(–red);}
 .about-divider{border:none;border-top:1px solid var(–border);margin:24px 0;}
-.about-quote{font-size:13px;color:var(–muted);line-height:1.75;font-style:italic;}
-.about-quote strong{color:var(–red);font-style:normal;}
-.pillars{display:flex;flex-direction:column;gap:20px;}
-.pillar{display:flex;gap:16px;align-items:flex-start;}
-.pillar-num{font-family:‘Oswald’,sans-serif;font-size:30px;color:#2a2a2a;
-line-height:1;flex-shrink:0;width:30px;font-weight:700;}
-.pillar h4{font-size:13px;font-weight:700;margin-bottom:4px;color:var(–white);}
-.pillar p{font-size:12px;color:var(–muted);line-height:1.65;font-weight:300;}
+.about-quote{font-size:14px;color:var(–muted);line-height:1.8;font-style:italic;font-weight:300;}
+.about-quote strong{color:var(–red);font-style:normal;font-weight:600;}
+.about-small{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:20px;}
+.about-small-box{background:var(–card);border:1px solid var(–border);padding:20px;text-align:center;}
+.asb-num{font-family:‘Barlow Condensed’,sans-serif;font-size:32px;font-weight:900;
+color:var(–red);letter-spacing:-1px;}
+.asb-label{font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(–muted);margin-top:2px;}
+.pillars{display:flex;flex-direction:column;gap:0;}
+.pillar{display:flex;gap:20px;align-items:flex-start;
+padding:24px 0;border-bottom:1px solid var(–border);}
+.pillar:last-child{border-bottom:none;}
+.pillar-num{font-family:‘Barlow Condensed’,sans-serif;font-size:11px;font-weight:800;
+color:var(–red);letter-spacing:2px;flex-shrink:0;width:28px;margin-top:2px;}
+.pillar h4{font-size:14px;font-weight:700;color:#fff;margin-bottom:5px;letter-spacing:.3px;}
+.pillar p{font-size:13px;color:var(–muted);line-height:1.65;font-weight:300;}
+
+/* ── VISUAL BREAK ── */
+.visual-break{background:var(–black);padding:0;display:grid;
+grid-template-columns:repeat(4,1fr);min-height:220px;}
+.vb-item{position:relative;overflow:hidden;display:flex;align-items:flex-end;padding:24px;
+min-height:220px;}
+.vb-bg{position:absolute;inset:0;}
+.vb-item:nth-child(1) .vb-bg{background:linear-gradient(135deg,#1a0a0a 0%,#2d0d0d 100%);}
+.vb-item:nth-child(2) .vb-bg{background:linear-gradient(135deg,#0a0a0a 0%,#1a1a1a 100%);}
+.vb-item:nth-child(3) .vb-bg{background:linear-gradient(135deg,var(–red) 0%,var(–darkred) 100%);}
+.vb-item:nth-child(4) .vb-bg{background:linear-gradient(135deg,#0d0d0d 0%,#1a1a1a 100%);}
+.vb-pattern{position:absolute;inset:0;
+background-image:repeating-linear-gradient(45deg,transparent,transparent 8px,rgba(255,255,255,.03) 8px,rgba(255,255,255,.03) 9px);}
+.vb-content{position:relative;z-index:1;}
+.vb-label{font-family:‘Barlow Condensed’,sans-serif;font-size:22px;font-weight:800;
+text-transform:uppercase;letter-spacing:1px;color:#fff;line-height:1;}
+.vb-sub{font-size:11px;color:rgba(255,255,255,.5);letter-spacing:1.5px;
+text-transform:uppercase;margin-top:4px;}
+.vb-item:nth-child(3) .vb-sub{color:rgba(255,255,255,.7);}
+.vb-icon{position:absolute;top:20px;right:20px;font-size:32px;opacity:.3;}
 
 /* ── AREAS ── */
-#areas{background:var(–dark);}
-.areas-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));
-gap:8px;margin-top:40px;}
-.area-chip{background:var(–card);border:1px solid var(–border);
-border-radius:2px;padding:12px 16px;transition:all .2s;text-align:center;cursor:default;}
-.area-chip:hover{border-color:var(–red);background:#1f1414;}
-.area-chip .city{display:block;font-family:‘Oswald’,sans-serif;font-size:14px;
-color:var(–white);letter-spacing:.5px;font-weight:600;margin-bottom:2px;}
-.area-chip .county{font-size:10px;color:var(–muted);letter-spacing:1px;text-transform:uppercase;}
+.areas-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(155px,1fr));
+gap:2px;margin-top:48px;}
+.area-card{background:var(–card);border:1px solid var(–border);
+padding:18px 16px;transition:all .2s;position:relative;overflow:hidden;}
+.area-card::after{content:’’;position:absolute;left:0;top:0;bottom:0;width:3px;
+background:var(–red);transform:scaleY(0);transform-origin:bottom;transition:transform .2s;}
+.area-card:hover{background:var(–card2);border-color:#2a2a2a;}
+.area-card:hover::after{transform:scaleY(1);}
+.area-city{font-family:‘Barlow Condensed’,sans-serif;font-size:17px;font-weight:700;
+text-transform:uppercase;letter-spacing:.5px;color:#fff;margin-bottom:2px;}
+.area-county{font-size:10px;text-transform:uppercase;letter-spacing:1.5px;color:var(–muted);}
 
 /* ── CONTACT ── */
-#contact{background:var(–black);}
-.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start;margin-top:48px;}
+.contact-wrap{display:grid;grid-template-columns:5fr 7fr;min-height:600px;}
+.contact-left{background:var(–red);padding:72px 56px;position:relative;overflow:hidden;}
+.contact-left::before{content:’’;position:absolute;inset:0;
+background:repeating-linear-gradient(45deg,transparent,transparent 15px,rgba(0,0,0,.06) 15px,rgba(0,0,0,.06) 16px);}
+.contact-left::after{content:‘GET IN TOUCH’;position:absolute;bottom:-30px;right:-20px;
+font-family:‘Barlow Condensed’,sans-serif;font-size:80px;font-weight:900;
+color:rgba(255,255,255,.06);line-height:1;letter-spacing:-3px;pointer-events:none;
+white-space:nowrap;}
+.contact-left-content{position:relative;z-index:1;}
+.contact-left h2{color:#fff;font-size:clamp(36px,4vw,56px);}
+.contact-left .eyebrow-text{color:rgba(255,255,255,.7);}
+.contact-left .eyebrow-line{background:rgba(255,255,255,.4);}
+.cl-sub{font-size:14px;color:rgba(255,255,255,.7);line-height:1.75;
+max-width:320px;margin:16px 0 36px;font-weight:300;}
 .cinfo{display:flex;flex-direction:column;gap:20px;}
 .ci{display:flex;gap:14px;align-items:flex-start;}
-.ci-ic{width:36px;height:36px;background:rgba(192,24,31,.12);
-border:1px solid rgba(192,24,31,.25);border-radius:3px;
+.ci-ic{width:38px;height:38px;background:rgba(255,255,255,.15);
 display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;}
-.ci-lbl{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(–muted);
-font-weight:700;margin-bottom:3px;}
-.ci-val{font-size:13px;color:var(–white);font-weight:500;}
-.ci-val a{color:var(–red);text-decoration:none;}
-
-.form{display:flex;flex-direction:column;gap:12px;}
-.frow{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
-.ff{display:flex;flex-direction:column;gap:5px;}
-.ff label{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(–muted);font-weight:700;}
-.ff input,.ff select,.ff textarea{
-background:#111;border:1px solid var(–border);border-radius:3px;
-padding:11px 13px;color:var(–white);font-family:‘Open Sans’,sans-serif;
-font-size:13px;outline:none;transition:border-color .2s;-webkit-appearance:none;}
-.ff input:focus,.ff select:focus,.ff textarea:focus{border-color:var(–red);}
-.ff textarea{resize:vertical;min-height:100px;}
-.ff select option{background:#111;}
-.fsub{background:var(–red);color:var(–white);border:none;border-radius:3px;
-padding:13px 28px;font-family:‘Open Sans’,sans-serif;font-weight:700;font-size:13px;
-cursor:pointer;letter-spacing:.8px;text-transform:uppercase;transition:all .2s;margin-top:4px;}
+.ci-lbl{font-size:9px;letter-spacing:2.5px;text-transform:uppercase;
+color:rgba(255,255,255,.6);font-weight:700;margin-bottom:3px;}
+.ci-val{font-size:13px;color:#fff;font-weight:600;}
+.ci-val a{color:#fff !important;-webkit-text-fill-color:#fff !important;}
+.contact-right{background:var(–card);padding:72px 56px;}
+.contact-right h3{font-family:‘Barlow Condensed’,sans-serif;font-size:clamp(28px,3vw,42px);
+font-weight:900;text-transform:uppercase;letter-spacing:-1px;
+color:#fff;margin-bottom:32px;}
+.form{display:flex;flex-direction:column;gap:0;}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:0;}
+.ff{display:flex;flex-direction:column;gap:0;border-bottom:1px solid var(–border);
+padding:14px 0;margin-right:0;}
+.frow .ff{padding-right:16px;}
+.frow .ff+.ff{padding-right:0;padding-left:16px;border-left:1px solid var(–border);}
+.ff label{font-size:9px;letter-spacing:2.5px;text-transform:uppercase;
+color:var(–muted);font-weight:700;margin-bottom:6px;}
+.ff input,.ff select,.ff textarea{background:transparent;border:none;
+color:#fff;font-family:‘Barlow’,sans-serif;font-size:14px;
+outline:none;-webkit-appearance:none;width:100%;}
+.ff input::placeholder,.ff textarea::placeholder{color:#333;}
+.ff select option{background:#111;color:#fff;}
+.ff textarea{resize:none;height:80px;margin-top:4px;}
+.fsub{background:var(–red);color:#fff !important;-webkit-text-fill-color:#fff !important;
+border:none;padding:16px 36px;font-family:‘Barlow Condensed’,sans-serif;
+font-weight:700;font-size:14px;letter-spacing:2px;text-transform:uppercase;
+cursor:pointer;transition:all .2s;margin-top:24px;align-self:flex-start;}
 .fsub:hover{background:var(–red2);}
-.fsuccess{display:none;background:rgba(192,24,31,.1);border:1px solid rgba(192,24,31,.3);
-border-radius:3px;padding:16px;text-align:center;font-size:13px;color:var(–red);margin-top:8px;}
+.fsuccess{display:none;color:var(–red);font-size:13px;margin-top:12px;font-weight:600;}
 
 /* ── FOOTER ── */
-footer{background:var(–black);border-top:2px solid var(–red);
-padding:28px 5%;display:flex;align-items:center;justify-content:space-between;
-flex-wrap:wrap;gap:14px;position:relative;z-index:1;}
-.fl{font-family:‘Oswald’,sans-serif;font-size:16px;letter-spacing:2px;font-weight:700;}
-.fl span{color:var(–red);}
-.fc{font-size:11px;color:var(–muted);}
-.ft{font-size:10px;color:var(–muted);border:1px solid #333;
-border-radius:2px;padding:4px 9px;letter-spacing:1.5px;text-transform:uppercase;}
+footer{background:#030303;border-top:1px solid var(–border);
+padding:32px 5%;display:flex;align-items:center;
+justify-content:space-between;flex-wrap:wrap;gap:14px;}
+.footer-logo{font-family:‘Barlow Condensed’,sans-serif;font-size:18px;
+font-weight:900;letter-spacing:3px;text-transform:uppercase;color:#fff;}
+.footer-logo span{color:var(–red);}
+.footer-right{display:flex;flex-direction:column;align-items:flex-end;gap:4px;}
+.footer-copy{font-size:11px;color:#333;letter-spacing:.5px;}
+.footer-badge{font-size:10px;color:var(–red);letter-spacing:2px;
+text-transform:uppercase;font-weight:700;}
 
-hr.div{border:none;border-top:1px solid var(–border);}
+/* ── FADE IN ── */
+.fade{opacity:0;transform:translateY(24px);transition:all .65s ease;}
+.fade.show{opacity:1;transform:translateY(0);}
 
-@media(max-width:768px){
+/* ── MOBILE ── */
+@media(max-width:900px){
+.svc-grid{grid-template-columns:repeat(2,1fr);}
+.about-grid{grid-template-columns:1fr;}
+.contact-wrap{grid-template-columns:1fr;}
+.stats-bar{grid-template-columns:repeat(2,1fr);gap:1px;}
+.stat-item+.stat-item{border-left:none;}
+.stat-item:nth-child(2){border-left:1px solid rgba(255,255,255,.2);}
+.visual-break{grid-template-columns:repeat(2,1fr);}
+}
+@media(max-width:640px){
 .nav-links,.nav-cta{display:none;}
 .nav-mob{display:block;}
-.nav-links.open{display:flex;position:absolute;top:60px;left:0;right:0;
-background:rgba(13,13,13,.98);padding:18px 5%;flex-direction:column;
-border-bottom:1px solid #222;z-index:99;}
-.hero{padding:95px 5% 60px;}
-.about-grid,.contact-grid{grid-template-columns:1fr;}
-.red-banner{gap:16px;}
-section{padding:60px 5%;}
+.nav-links.open{display:flex;position:absolute;top:64px;left:0;right:0;
+background:rgba(6,6,6,.99);padding:20px 5%;flex-direction:column;
+border-bottom:1px solid #222;z-index:99;gap:20px;}
+.svc-grid{grid-template-columns:1fr;}
+.frow{grid-template-columns:1fr;}
+.frow .ff{padding-right:0;}
+.frow .ff+.ff{padding-left:0;border-left:none;}
+.contact-left,.contact-right{padding:48px 24px;}
+.sec{padding:64px 5%;}
+.visual-break{grid-template-columns:1fr 1fr;}
+.stats-bar{grid-template-columns:1fr 1fr;}
+h1{font-size:clamp(56px,14vw,90px);}
 }
-
-/* Safari link color override */
-a { color: inherit !important; -webkit-text-fill-color: inherit !important; }
-a.btn-red { color: #ffffff !important; -webkit-text-fill-color: #ffffff !important; }
-a.btn-wht { color: #ffffff !important; -webkit-text-fill-color: #ffffff !important; }
-a.btn-wht:hover { color: #c0181f !important; -webkit-text-fill-color: #c0181f !important; }
-a.nav-cta { color: #ffffff !important; -webkit-text-fill-color: #ffffff !important; }
-a.aea-logo-svg { color: #ffffff !important; -webkit-text-fill-color: #ffffff !important; }
-.nav-links a { color: #999 !important; -webkit-text-fill-color: #999 !important; }
-.nav-links a:hover { color: #c0181f !important; -webkit-text-fill-color: #c0181f !important; }
-
-- { -webkit-tap-highlight-color: transparent; }
-
 </style>
+
 </head>
 <body>
 
 <!-- NAV -->
 
 <nav>
-  <a class="aea-logo-svg" href="#">
-    <!-- Inline SVG logo recreating AEA style -->
-    <svg class="logo-graphic" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <!-- House roof -->
-      <polygon points="22,4 40,18 4,18" fill="#c0181f"/>
-      <!-- House body -->
-      <rect x="8" y="18" width="28" height="18" fill="#ffffff"/>
-      <!-- Door -->
-      <rect x="18" y="26" width="8" height="10" fill="#c0181f"/>
-      <!-- Windows -->
-      <rect x="10" y="21" width="6" height="5" fill="#c0181f"/>
-      <rect x="28" y="21" width="6" height="5" fill="#c0181f"/>
-      <!-- Chimney -->
-      <rect x="30" y="8" width="4" height="8" fill="#8f0f14"/>
-      <!-- Wrench icon small -->
-      <circle cx="38" cy="38" r="5" fill="#c0181f"/>
-      <rect x="36" y="36" width="4" height="1.5" rx=".75" fill="white" transform="rotate(45 38 38)"/>
-      <rect x="36" y="38.5" width="4" height="1.5" rx=".75" fill="white" transform="rotate(45 38 38)"/>
-    </svg>
+  <a class="nav-logo" href="#">
+    <div class="logo-mark">A</div>
     <div class="logo-words">
-      <strong>AEA PROPERTY SERVICE</strong>
+      <strong>AEA Property Service</strong>
       <span>LLC &mdash; Atlanta Metro</span>
     </div>
   </a>
@@ -259,281 +346,418 @@ a.aea-logo-svg { color: #ffffff !important; -webkit-text-fill-color: #ffffff !im
 
 <!-- HERO -->
 
-<section class="hero" id="home">
-  <div class="hero-stripe"></div>
-  <div class="hero-bg-word">AEA</div>
-  <div style="position:relative;z-index:1;max-width:700px;">
-    <div class="hero-tag">
-      <div class="hero-tag-dot"></div>
-      <span class="hero-tag-txt">Now Serving All of Atlanta Metro</span>
+<section class="hero tex-grid">
+  <div class="hero-bg">
+    <div class="hero-bg-block"></div>
+    <div class="hero-bg-block"></div>
+    <div class="hero-bg-block"></div>
+    <div class="hero-line"></div>
+    <div class="hero-line"></div>
+  </div>
+  <div class="hero-bigtext">AEA</div>
+  <div class="hero-content">
+    <div class="hero-badge">
+      <div class="hero-badge-dot"></div>
+      <span>Now Serving All of Atlanta Metro, GA</span>
     </div>
     <h1>
-      <span class="w">PREMIUM</span><br>
-      <span class="r">LANDSCAPING</span><br>
-      <span class="w">& PROPERTY</span><br>
-      <span class="w">MAINTENANCE</span>
+      <span class="h1-w">Full Service</span>
+      <span class="h1-r">Property</span>
+      <span class="h1-w">Maintenance</span>
+      <span class="h1-o">&amp; Repair</span>
     </h1>
     <p class="hero-sub">
-      <strong>AEA Property Service LLC</strong> delivers professional landscaping and property maintenance for residential homes, commercial properties, and HOA communities across Greater Atlanta.
+      <strong>AEA Property Service LLC</strong> handles everything your property needs &mdash; lawn care, repairs, painting, pressure washing, parking lots and more. One call. Everything done.
     </p>
     <div class="hero-btns">
-      <a href="#contact" class="btn-red">Get a Free Quote</a>
-      <a href="#services" class="btn-wht">Our Services</a>
+      <a href="#contact" class="btn-r">Get a Free Quote</a>
+      <a href="#services" class="btn-o">View All Services</a>
     </div>
-    <div class="hero-badges">
-      <div class="badge"><div class="badge-icon">&#10003;</div><span class="badge-txt">Licensed &amp; Insured</span></div>
-      <div class="badge"><div class="badge-icon">&#9679;</div><span class="badge-txt">Atlanta Based</span></div>
-      <div class="badge"><div class="badge-icon">&#9889;</div><span class="badge-txt">Fast Response</span></div>
+    <div class="hero-trust">
+      <div class="trust-item">
+        <div class="trust-icon">&#10003;</div>
+        <span class="trust-label">Licensed &amp; Insured</span>
+      </div>
+      <div class="trust-item">
+        <div class="trust-icon">&#9679;</div>
+        <span class="trust-label">Atlanta Based</span>
+      </div>
+      <div class="trust-item">
+        <div class="trust-icon">&#9889;</div>
+        <span class="trust-label">24H Response</span>
+      </div>
+      <div class="trust-item">
+        <div class="trust-icon">&#9670;</div>
+        <span class="trust-label">HOA &amp; Commercial</span>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- RED BANNER -->
+<!-- MARQUEE -->
 
-<div class="red-banner">
-  <div class="banner-item">&#9670; Lawn Care</div>
-  <div class="banner-dot"></div>
-  <div class="banner-item">&#9670; Tree &amp; Shrub</div>
-  <div class="banner-dot"></div>
-  <div class="banner-item">&#9670; Landscaping</div>
-  <div class="banner-dot"></div>
-  <div class="banner-item">&#9670; HOA Contracts</div>
-  <div class="banner-dot"></div>
-  <div class="banner-item">&#9670; Commercial</div>
+<div class="marquee">
+  <div class="marquee-track">
+    <span class="marquee-item">Lawn Care</span>
+    <span class="marquee-item">Landscaping</span>
+    <span class="marquee-item">Handyman Repairs</span>
+    <span class="marquee-item">Painting</span>
+    <span class="marquee-item">Pressure Washing</span>
+    <span class="marquee-item">Drywall</span>
+    <span class="marquee-item">Parking Lot Striping</span>
+    <span class="marquee-item">Sealcoating</span>
+    <span class="marquee-item">Parking Lot Repairs</span>
+    <span class="marquee-item">Tree &amp; Shrub Care</span>
+    <span class="marquee-item">HOA Contracts</span>
+    <span class="marquee-item">Commercial Properties</span>
+    <span class="marquee-item">Lawn Care</span>
+    <span class="marquee-item">Landscaping</span>
+    <span class="marquee-item">Handyman Repairs</span>
+    <span class="marquee-item">Painting</span>
+    <span class="marquee-item">Pressure Washing</span>
+    <span class="marquee-item">Drywall</span>
+    <span class="marquee-item">Parking Lot Striping</span>
+    <span class="marquee-item">Sealcoating</span>
+    <span class="marquee-item">Parking Lot Repairs</span>
+    <span class="marquee-item">Tree &amp; Shrub Care</span>
+    <span class="marquee-item">HOA Contracts</span>
+    <span class="marquee-item">Commercial Properties</span>
+  </div>
 </div>
 
 <!-- SERVICES -->
 
-<section id="services">
-  <div class="sec-label">What We Do</div>
-  <h2>OUR SERVICES</h2>
-  <p class="sec-desc">Full-service landscaping and property maintenance for homes, businesses, and communities across Atlanta Metro.</p>
-  <div class="svc-grid">
+<section class="sec sec-dark" id="services">
+  <div class="fade">
+    <div class="eyebrow"><div class="eyebrow-line"></div><span class="eyebrow-text">What We Do</span></div>
+    <h2>Every Service<br>Your Property Needs</h2>
+    <p class="sec-sub">One company for everything. Stop juggling multiple contractors &mdash; we handle it all under one roof.</p>
+  </div>
+  <div class="svc-grid fade">
 
 ```
 <div class="svc-card">
-  <div class="svc-icon">&#127807;</div>
-  <div class="svc-name">Lawn Care</div>
-  <p class="svc-desc">Regular mowing, edging, and trimming to keep your lawn sharp year-round.</p>
-  <ul class="svc-list">
-    <li>Weekly &amp; bi-weekly mowing</li>
-    <li>Edging &amp; trimming</li>
-    <li>Blowing &amp; cleanup</li>
-    <li>Seasonal programs</li>
-  </ul>
+  <div class="svc-num">01</div>
+  <div class="svc-ico">&#127807;</div>
+  <div class="svc-name">Lawn Care &amp; Landscaping</div>
+  <p class="svc-desc">Professional mowing, edging, trimming and full landscape design for any size property. Weekly and monthly programs available.</p>
+  <div class="svc-tags">
+    <span class="svc-tag">Mowing</span>
+    <span class="svc-tag">Edging</span>
+    <span class="svc-tag">Mulching</span>
+    <span class="svc-tag">Design</span>
+    <span class="svc-tag">Cleanup</span>
+  </div>
 </div>
 
 <div class="svc-card">
-  <div class="svc-icon">&#127795;</div>
-  <div class="svc-name">Tree &amp; Shrub Care</div>
-  <p class="svc-desc">Professional pruning and shaping to keep trees and shrubs healthy.</p>
-  <ul class="svc-list">
-    <li>Tree trimming</li>
-    <li>Shrub &amp; hedge shaping</li>
-    <li>Dead limb removal</li>
-    <li>Stump grinding</li>
-  </ul>
+  <div class="svc-num">02</div>
+  <div class="svc-ico">&#9874;</div>
+  <div class="svc-name">Handyman Repairs</div>
+  <p class="svc-desc">Fast, reliable repairs for residential and commercial properties. Doors, fixtures, carpentry and general maintenance done right.</p>
+  <div class="svc-tags">
+    <span class="svc-tag">Doors</span>
+    <span class="svc-tag">Fixtures</span>
+    <span class="svc-tag">Carpentry</span>
+    <span class="svc-tag">General</span>
+  </div>
 </div>
 
 <div class="svc-card">
-  <div class="svc-icon">&#9832;</div>
-  <div class="svc-name">Cleanup &amp; Mulching</div>
-  <p class="svc-desc">Seasonal cleanups and fresh mulch to protect beds and boost curb appeal.</p>
-  <ul class="svc-list">
-    <li>Leaf removal</li>
-    <li>Bed cleanups</li>
-    <li>Mulch installation</li>
-    <li>Debris hauling</li>
-  </ul>
+  <div class="svc-num">03</div>
+  <div class="svc-ico">&#127912;</div>
+  <div class="svc-name">Painting</div>
+  <p class="svc-desc">Interior and exterior painting with clean lines, quality finishes and lasting results on any property type.</p>
+  <div class="svc-tags">
+    <span class="svc-tag">Interior</span>
+    <span class="svc-tag">Exterior</span>
+    <span class="svc-tag">Commercial</span>
+    <span class="svc-tag">Trim</span>
+  </div>
 </div>
 
 <div class="svc-card">
-  <div class="svc-icon">&#127793;</div>
-  <div class="svc-name">Landscape Design</div>
-  <p class="svc-desc">Transform your outdoor space with new planting, sod, and curb appeal upgrades.</p>
-  <ul class="svc-list">
-    <li>New planting &amp; sod</li>
-    <li>Garden bed design</li>
-    <li>Curb appeal packages</li>
-    <li>Seasonal flowers</li>
-  </ul>
+  <div class="svc-num">04</div>
+  <div class="svc-ico">&#128167;</div>
+  <div class="svc-name">Pressure Washing</div>
+  <p class="svc-desc">Restore driveways, buildings, decks and parking lots to like-new condition with professional grade equipment.</p>
+  <div class="svc-tags">
+    <span class="svc-tag">Driveways</span>
+    <span class="svc-tag">Buildings</span>
+    <span class="svc-tag">Decks</span>
+    <span class="svc-tag">Parking Lots</span>
+  </div>
 </div>
 
 <div class="svc-card">
-  <div class="svc-icon">&#128167;</div>
-  <div class="svc-name">Irrigation</div>
-  <p class="svc-desc">Keep your lawn green without the hassle. Installation, repair, and seasonal service.</p>
-  <ul class="svc-list">
-    <li>Sprinkler installation</li>
-    <li>System repairs</li>
-    <li>Winterization</li>
-    <li>Smart timer setup</li>
-  </ul>
+  <div class="svc-num">05</div>
+  <div class="svc-ico">&#9632;</div>
+  <div class="svc-name">Drywall</div>
+  <p class="svc-desc">Expert drywall installation and repair with seamless texture matching. Water damage, holes and full installs.</p>
+  <div class="svc-tags">
+    <span class="svc-tag">Repair</span>
+    <span class="svc-tag">Installation</span>
+    <span class="svc-tag">Texture</span>
+    <span class="svc-tag">Water Damage</span>
+  </div>
 </div>
 
 <div class="svc-card">
-  <div class="svc-icon">&#127968;</div>
-  <div class="svc-name">Commercial &amp; HOA</div>
-  <p class="svc-desc">Reliable, recurring service for property managers, HOAs, and commercial clients.</p>
-  <ul class="svc-list">
-    <li>HOA community maintenance</li>
-    <li>Commercial grounds care</li>
-    <li>Contract pricing</li>
-    <li>Priority scheduling</li>
-  </ul>
+  <div class="svc-num">06</div>
+  <div class="svc-ico">&#9644;</div>
+  <div class="svc-name">Parking Lot Services</div>
+  <p class="svc-desc">Complete parking lot striping, pothole repairs and sealcoating. ADA compliant markings for commercial properties.</p>
+  <div class="svc-tags">
+    <span class="svc-tag">Striping</span>
+    <span class="svc-tag">Repairs</span>
+    <span class="svc-tag">Sealcoating</span>
+    <span class="svc-tag">ADA</span>
+  </div>
 </div>
 ```
 
   </div>
 </section>
 
-<hr class="div">
+<!-- STATS -->
+
+<div class="stats-bar fade">
+  <div class="stat-item">
+    <div class="stat-big">10+</div>
+    <div class="stat-label">Services Offered</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-big">100%</div>
+    <div class="stat-label">Licensed &amp; Insured</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-big">ATL</div>
+    <div class="stat-label">Metro Coverage</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-big">24H</div>
+    <div class="stat-label">Response Time</div>
+  </div>
+</div>
+
+<!-- VISUAL BREAK -->
+
+<div class="visual-break">
+  <div class="vb-item">
+    <div class="vb-bg"></div>
+    <div class="vb-pattern"></div>
+    <div class="vb-icon">&#127807;</div>
+    <div class="vb-content">
+      <div class="vb-label">Grounds</div>
+      <div class="vb-sub">Lawn &amp; Landscape</div>
+    </div>
+  </div>
+  <div class="vb-item">
+    <div class="vb-bg"></div>
+    <div class="vb-pattern"></div>
+    <div class="vb-icon">&#9874;</div>
+    <div class="vb-content">
+      <div class="vb-label">Repairs</div>
+      <div class="vb-sub">Handyman Services</div>
+    </div>
+  </div>
+  <div class="vb-item">
+    <div class="vb-bg"></div>
+    <div class="vb-pattern"></div>
+    <div class="vb-icon">&#9644;</div>
+    <div class="vb-content">
+      <div class="vb-label">Pavement</div>
+      <div class="vb-sub">Parking Lots</div>
+    </div>
+  </div>
+  <div class="vb-item">
+    <div class="vb-bg"></div>
+    <div class="vb-pattern"></div>
+    <div class="vb-icon">&#127968;</div>
+    <div class="vb-content">
+      <div class="vb-label">Commercial</div>
+      <div class="vb-sub">HOA &amp; Business</div>
+    </div>
+  </div>
+</div>
 
 <!-- ABOUT -->
 
-<section id="about">
-  <div class="sec-label">Why AEA</div>
-  <h2>BUILT ON RELIABILITY</h2>
+<section class="sec sec-dark" id="about">
   <div class="about-grid">
-    <div class="about-card">
-      <div class="about-big">ATL</div>
-      <div class="about-big-sub">Metro Area Coverage</div>
-      <hr class="about-divider">
-      <p class="about-quote">
-        At <strong>AEA Property Service LLC</strong>, we believe every property deserves to look its best. We bring professional-grade landscaping to homes, businesses, and communities across Greater Atlanta &mdash; on time, every time.
-      </p>
+    <div class="about-visual fade">
+      <div class="about-box-main tex-dots">
+        <div class="about-tagline">One Call.<br><span>Everything</span><br>Done Right.</div>
+        <hr class="about-divider">
+        <p class="about-quote">
+          At <strong>AEA Property Service LLC</strong>, we believe every property deserves professional maintenance without the hassle. We handle everything so property managers, HOAs and homeowners can focus on what matters most.
+        </p>
+        <div class="about-small">
+          <div class="about-small-box">
+            <div class="asb-num">ATL</div>
+            <div class="asb-label">Metro Wide</div>
+          </div>
+          <div class="about-small-box">
+            <div class="asb-num">COI</div>
+            <div class="asb-label">On Request</div>
+          </div>
+          <div class="about-small-box">
+            <div class="asb-num">10+</div>
+            <div class="asb-label">Services</div>
+          </div>
+          <div class="about-small-box">
+            <div class="asb-num">24H</div>
+            <div class="asb-label">Response</div>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="pillars">
-      <div class="pillar">
-        <div class="pillar-num">01</div>
-        <div>
-          <h4>Licensed &amp; Fully Insured</h4>
-          <p>We carry full liability insurance. COI available on request for property managers and HOAs.</p>
+    <div class="fade">
+      <div class="eyebrow"><div class="eyebrow-line"></div><span class="eyebrow-text">Why AEA</span></div>
+      <h2>Built on<br>Reliability</h2>
+      <div class="pillars">
+        <div class="pillar">
+          <div class="pillar-num">01</div>
+          <div>
+            <h4>Licensed &amp; Fully Insured</h4>
+            <p>We carry full liability insurance. COI available immediately on request for property managers and HOAs. No risk, no hassle.</p>
+          </div>
         </div>
-      </div>
-      <div class="pillar">
-        <div class="pillar-num">02</div>
-        <div>
-          <h4>Consistent &amp; Reliable</h4>
-          <p>We show up on schedule, every time. No excuses, no last-minute cancellations.</p>
+        <div class="pillar">
+          <div class="pillar-num">02</div>
+          <div>
+            <h4>One Company, Everything Done</h4>
+            <p>Lawn, repairs, painting, pressure washing, parking lots &mdash; one company, one invoice, one point of contact. No more chasing contractors.</p>
+          </div>
         </div>
-      </div>
-      <div class="pillar">
-        <div class="pillar-num">03</div>
-        <div>
-          <h4>Professional Equipment</h4>
-          <p>Commercial-grade tools for faster, cleaner results on any size property.</p>
+        <div class="pillar">
+          <div class="pillar-num">03</div>
+          <div>
+            <h4>Always On Schedule</h4>
+            <p>We show up when we say we will. No excuses, no last minute cancellations. Your property stays maintained on your timeline.</p>
+          </div>
         </div>
-      </div>
-      <div class="pillar">
-        <div class="pillar-num">04</div>
-        <div>
-          <h4>Transparent Pricing</h4>
-          <p>Free quotes, no hidden fees. Recurring contracts available for predictable costs.</p>
+        <div class="pillar">
+          <div class="pillar-num">04</div>
+          <div>
+            <h4>HOA &amp; Commercial Contracts</h4>
+            <p>Fully equipped for large communities, apartment complexes and commercial properties. Contract pricing available for recurring work.</p>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </section>
-
-<hr class="div">
 
 <!-- AREAS -->
 
-<section id="areas">
-  <div class="sec-label">Service Area</div>
-  <h2>WE SERVE GREATER ATLANTA</h2>
-  <p class="sec-desc" style="margin-bottom:0">Residential, commercial, and HOA properties across the metro area.</p>
-  <div class="areas-grid">
-    <div class="area-chip"><span class="city">Atlanta</span><span class="county">Fulton Co.</span></div>
-    <div class="area-chip"><span class="city">Lawrenceville</span><span class="county">Gwinnett Co.</span></div>
-    <div class="area-chip"><span class="city">Alpharetta</span><span class="county">Fulton Co.</span></div>
-    <div class="area-chip"><span class="city">Marietta</span><span class="county">Cobb Co.</span></div>
-    <div class="area-chip"><span class="city">Decatur</span><span class="county">DeKalb Co.</span></div>
-    <div class="area-chip"><span class="city">Sandy Springs</span><span class="county">Fulton Co.</span></div>
-    <div class="area-chip"><span class="city">Roswell</span><span class="county">Fulton Co.</span></div>
-    <div class="area-chip"><span class="city">Duluth</span><span class="county">Gwinnett Co.</span></div>
-    <div class="area-chip"><span class="city">Norcross</span><span class="county">Gwinnett Co.</span></div>
-    <div class="area-chip"><span class="city">Smyrna</span><span class="county">Cobb Co.</span></div>
-    <div class="area-chip"><span class="city">Kennesaw</span><span class="county">Cobb Co.</span></div>
-    <div class="area-chip"><span class="city">Buford</span><span class="county">Gwinnett Co.</span></div>
-    <div class="area-chip"><span class="city">Snellville</span><span class="county">Gwinnett Co.</span></div>
-    <div class="area-chip"><span class="city">Cumming</span><span class="county">Forsyth Co.</span></div>
-    <div class="area-chip"><span class="city">Peachtree City</span><span class="county">Fayette Co.</span></div>
-    <div class="area-chip"><span class="city">&amp; More</span><span class="county">Call Us</span></div>
+<section class="sec sec-black" id="areas">
+  <div class="fade">
+    <div class="eyebrow"><div class="eyebrow-line"></div><span class="eyebrow-text">Coverage</span></div>
+    <h2>We Serve All of<br><span style="color:var(--red)">Atlanta Metro</span></h2>
+    <p class="sec-sub">Residential, commercial and HOA properties across Greater Atlanta.</p>
+  </div>
+  <div class="areas-grid fade">
+    <div class="area-card"><div class="area-city">Atlanta</div><div class="area-county">Fulton Co.</div></div>
+    <div class="area-card"><div class="area-city">Lawrenceville</div><div class="area-county">Gwinnett Co.</div></div>
+    <div class="area-card"><div class="area-city">Suwanee</div><div class="area-county">Gwinnett Co.</div></div>
+    <div class="area-card"><div class="area-city">Loganville</div><div class="area-county">Walton Co.</div></div>
+    <div class="area-card"><div class="area-city">Alpharetta</div><div class="area-county">Fulton Co.</div></div>
+    <div class="area-card"><div class="area-city">Marietta</div><div class="area-county">Cobb Co.</div></div>
+    <div class="area-card"><div class="area-city">Duluth</div><div class="area-county">Gwinnett Co.</div></div>
+    <div class="area-card"><div class="area-city">Norcross</div><div class="area-county">Gwinnett Co.</div></div>
+    <div class="area-card"><div class="area-city">Buford</div><div class="area-county">Gwinnett Co.</div></div>
+    <div class="area-card"><div class="area-city">Snellville</div><div class="area-county">Gwinnett Co.</div></div>
+    <div class="area-card"><div class="area-city">Decatur</div><div class="area-county">DeKalb Co.</div></div>
+    <div class="area-card"><div class="area-city">Sandy Springs</div><div class="area-county">Fulton Co.</div></div>
+    <div class="area-card"><div class="area-city">Cumming</div><div class="area-county">Forsyth Co.</div></div>
+    <div class="area-card"><div class="area-city">Kennesaw</div><div class="area-county">Cobb Co.</div></div>
+    <div class="area-card"><div class="area-city">Roswell</div><div class="area-county">Fulton Co.</div></div>
+    <div class="area-card"><div class="area-city">&amp; More</div><div class="area-county">Call Us</div></div>
   </div>
 </section>
 
-<hr class="div">
-
 <!-- CONTACT -->
 
-<section id="contact">
-  <div class="sec-label">Get In Touch</div>
-  <h2>FREE QUOTE &mdash; NO OBLIGATION</h2>
-  <div class="contact-grid">
-    <div>
-      <p style="color:var(--muted);font-size:14px;line-height:1.75;max-width:380px;font-weight:300;margin-bottom:32px;">
-        Tell us about your property and we'll get back to you within 24 hours with a free, no-pressure estimate.
-      </p>
-      <div class="cinfo">
-        <div class="ci">
-          <div class="ci-ic">&#9679;</div>
-          <div><div class="ci-lbl">Service Area</div><div class="ci-val">Atlanta Metro, Georgia</div></div>
-        </div>
-        <div class="ci">
-          <div class="ci-ic">&#9889;</div>
-          <div><div class="ci-lbl">Response Time</div><div class="ci-val">Within 24 Hours</div></div>
-        </div>
-        <div class="ci">
-          <div class="ci-ic">&#9670;</div>
-          <div><div class="ci-lbl">Insurance</div><div class="ci-val">Fully Licensed &amp; Insured</div></div>
+<section class="sec sec-black" id="contact" style="padding:0;">
+  <div class="contact-wrap">
+    <div class="contact-left">
+      <div class="contact-left-content">
+        <div class="eyebrow"><div class="eyebrow-line"></div><span class="eyebrow-text">Get Started</span></div>
+        <h2>Request Your<br>Free Quote</h2>
+        <p class="cl-sub">Tell us about your property and we&rsquo;ll respond within 24 hours with a free no-pressure estimate.</p>
+        <div class="cinfo">
+          <div class="ci">
+            <div class="ci-ic">&#9679;</div>
+            <div><div class="ci-lbl">Service Area</div><div class="ci-val">Atlanta Metro, Georgia</div></div>
+          </div>
+          <div class="ci">
+            <div class="ci-ic">&#9993;</div>
+            <div><div class="ci-lbl">Email</div><div class="ci-val"><a href="mailto:aeapropertyservice@gmail.com">aeapropertyservice@gmail.com</a></div></div>
+          </div>
+          <div class="ci">
+            <div class="ci-ic">&#9889;</div>
+            <div><div class="ci-lbl">Response Time</div><div class="ci-val">Within 24 Hours</div></div>
+          </div>
+          <div class="ci">
+            <div class="ci-ic">&#9670;</div>
+            <div><div class="ci-lbl">Insurance</div><div class="ci-val">Licensed &amp; Fully Insured</div></div>
+          </div>
         </div>
       </div>
     </div>
-    <div class="form">
-      <div class="frow">
-        <div class="ff"><label>First Name</label><input type="text" id="fn" placeholder="John"></div>
-        <div class="ff"><label>Last Name</label><input type="text" id="ln" placeholder="Smith"></div>
+    <div class="contact-right">
+      <h3>Tell Us About<br>Your Property</h3>
+      <div class="form">
+        <div class="frow">
+          <div class="ff"><label>First Name</label><input type="text" id="fn" placeholder="John"></div>
+          <div class="ff"><label>Last Name</label><input type="text" id="ln" placeholder="Smith"></div>
+        </div>
+        <div class="ff"><label>Email Address</label><input type="email" id="fe" placeholder="you@email.com"></div>
+        <div class="ff"><label>Phone Number</label><input type="tel" id="fp" placeholder="(470) 555-0000"></div>
+        <div class="ff">
+          <label>Property Type</label>
+          <select id="ftype">
+            <option value="">Select...</option>
+            <option>Residential Home</option>
+            <option>Commercial Property</option>
+            <option>HOA / Community</option>
+            <option>Rental / Investment Property</option>
+            <option>Apartment Complex</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="ff">
+          <label>Service Needed</label>
+          <select id="fsvc">
+            <option value="">Select...</option>
+            <option>Lawn Care &amp; Landscaping</option>
+            <option>Handyman Repairs</option>
+            <option>Painting</option>
+            <option>Pressure Washing</option>
+            <option>Drywall</option>
+            <option>Parking Lot Striping</option>
+            <option>Parking Lot Repairs</option>
+            <option>Sealcoating</option>
+            <option>Multiple Services</option>
+            <option>HOA / Commercial Contract</option>
+            <option>Not Sure &mdash; Need Full Estimate</option>
+          </select>
+        </div>
+        <div class="ff"><label>Message</label><textarea id="fm" placeholder="Describe your property and what you need..."></textarea></div>
+        <button class="fsub" onclick="sendForm()">Send Request &rarr;</button>
+        <div class="fsuccess" id="fsuccess">&#10003; Message sent! We&rsquo;ll be in touch within 24 hours.</div>
       </div>
-      <div class="ff"><label>Email</label><input type="email" id="fe" placeholder="you@email.com"></div>
-      <div class="ff"><label>Phone</label><input type="tel" id="fp" placeholder="(470) 555-0000"></div>
-      <div class="ff">
-        <label>Property Type</label>
-        <select id="ftype">
-          <option value="">Select property type...</option>
-          <option>Residential Home</option>
-          <option>Commercial Property</option>
-          <option>HOA / Community</option>
-          <option>Rental Property</option>
-          <option>Other</option>
-        </select>
-      </div>
-      <div class="ff">
-        <label>Service Needed</label>
-        <select id="fsvc">
-          <option value="">Select a service...</option>
-          <option>Lawn Care</option>
-          <option>Tree &amp; Shrub Care</option>
-          <option>Cleanup &amp; Mulching</option>
-          <option>Landscape Design</option>
-          <option>Irrigation</option>
-          <option>Commercial / HOA Contract</option>
-          <option>Multiple Services</option>
-          <option>Not Sure &mdash; Need Estimate</option>
-        </select>
-      </div>
-      <div class="ff"><label>Message</label><textarea id="fm" placeholder="Tell us about your property and what you need..."></textarea></div>
-      <button class="fsub" onclick="sendForm()">Request Free Quote &rarr;</button>
-      <div class="fsuccess" id="fsuccess">&#10003; Request received! We'll be in touch within 24 hours.</div>
     </div>
   </div>
 </section>
 
 <footer>
-  <div class="fl">AEA <span>PROPERTY SERVICE</span> LLC</div>
-  <div class="fc">&copy; 2025 AEA Property Service LLC &bull; Atlanta Metro, GA</div>
-  <div class="ft">Licensed &amp; Insured</div>
+  <div class="footer-logo">AEA <span>Property Service</span> LLC</div>
+  <div class="footer-right">
+    <div class="footer-badge">Licensed &amp; Insured &bull; Atlanta Metro, GA</div>
+    <div class="footer-copy">&copy; 2025 AEA Property Service LLC. All rights reserved.</div>
+  </div>
 </footer>
 
 <script>
@@ -541,7 +765,7 @@ function sendForm(){
   var fn=document.getElementById('fn').value.trim();
   var fe=document.getElementById('fe').value.trim();
   var fsvc=document.getElementById('fsvc').value;
-  if(!fn||!fe||!fsvc){alert('Please fill in your name, email, and service needed.');return;}
+  if(!fn||!fe||!fsvc){alert('Please fill in your name, email and service needed.');return;}
   var ln=document.getElementById('ln').value.trim();
   var fp=document.getElementById('fp').value.trim();
   var ft=document.getElementById('ftype').value;
@@ -554,6 +778,9 @@ function sendForm(){
   document.getElementById('ftype').value='';
   document.getElementById('fsvc').value='';
 }
+// Scroll animations
+var obs=new IntersectionObserver(function(e){e.forEach(function(el){if(el.isIntersecting)el.target.classList.add('show');});},{threshold:.1});
+document.querySelectorAll('.fade').forEach(function(el){obs.observe(el);});
 </script>
 
 </body>
